@@ -35,17 +35,52 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   Widget build(BuildContext context) {
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final slideshowMovies = ref.watch(moviesSlideshowProvider);
-    return Column(
-      children: [
-        const CustomAppbar(),
-        MoviesSlideshow(movies: slideshowMovies),
-        MovieHorizontalListview(
-            movies: nowPlayingMovies,
-            title: 'Movie Listings',
-            subTitle: 'Monday 20',
-            loadNextPage: () {
-              ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
-            })
+    return CustomScrollView(
+      slivers: [
+        const SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(title: CustomAppbar()),
+        ),
+        SliverList(
+            delegate: SliverChildBuilderDelegate((context, index) {
+          return Column(
+            children: [
+              //const CustomAppbar(),
+              MoviesSlideshow(movies: slideshowMovies),
+              MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Movie Listings',
+                  subTitle: 'Monday 20',
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  }),
+              MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Coming Soon',
+                  subTitle: 'This Month',
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  }),
+              MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Popular',
+                  //subTitle: 'Monday 20',
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  }),
+              MovieHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'Best Rating',
+                  subTitle: 'Of all times',
+                  loadNextPage: () {
+                    ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+                  }),
+              const SizedBox(
+                height: 10,
+              )
+            ],
+          );
+        }, childCount: 1))
       ],
     );
   }

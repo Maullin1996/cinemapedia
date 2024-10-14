@@ -1,8 +1,9 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import 'package:cinemapedia/presentation/providers/providers.dart';
 import 'package:cinemapedia/domain/entities/movie.dart';
 
 class MovieDetails extends ConsumerStatefulWidget {
@@ -137,7 +138,7 @@ class _ActorsByMovie extends ConsumerWidget {
                 Text(
                   actor.character ?? '',
                   maxLines: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       overflow: TextOverflow.ellipsis),
                 )

@@ -16,7 +16,7 @@ class MovieMapper {
       popularity: moviedb.popularity,
       posterPath: (moviedb.posterPath != '')
           ? 'https://image.tmdb.org/t/p/w500${moviedb.posterPath}'
-          : 'no-poster',
+          : 'https://cdn.movieguide.org/wp-content/uploads/2021/09/Poster-Not-Available.jpg',
       releaseDate: moviedb.releaseDate,
       title: moviedb.title,
       video: moviedb.video,

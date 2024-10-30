@@ -1,4 +1,10 @@
+import 'package:isar/isar.dart';
+
+part 'movie.g.dart';
+
+@collection
 class Movie {
+  Id? idIsar = Isar.autoIncrement;
   final bool adult;
   final String backdropPath;
   final List<String> genreIds;
@@ -8,11 +14,11 @@ class Movie {
   final String overview;
   final double popularity;
   final String posterPath;
-  final dynamic releaseDate;
   final String title;
   final bool video;
   final double voteAverage;
   final int voteCount;
+  final dynamic releaseDate;
 
   Movie(
       {required this.adult,
